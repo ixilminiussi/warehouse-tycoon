@@ -142,6 +142,8 @@ func delete() -> void:
 		get_parent().get_node("AudioStreamPlayer2D").stream = delete_sound
 		get_parent().get_node("AudioStreamPlayer2D").play()
 		get_tree().call_group("truck_updates","update")
+		get_parent().money_count -= failed_fee
+		get_parent().update
 		get_parent().add_child(PointLabel.new(str(-failed_fee), -failed_fee, $GhostSprite.global_position - Vector2(50, 100)))
 		queue_free()
 	else:
