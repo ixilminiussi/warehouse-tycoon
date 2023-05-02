@@ -1,0 +1,338 @@
+[gd_scene load_steps=34 format=3 uid="uid://ced2qsowmnvvm"]
+
+[ext_resource type="FontFile" uid="uid://ei4s41d1n3na" path="res://assets/dogicapixelbold.ttf" id="1_6scjc"]
+[ext_resource type="FontFile" uid="uid://bqf70gym6urk4" path="res://assets/Early GameBoy.ttf" id="1_wihg6"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="3_57lk5"]
+[ext_resource type="Texture2D" uid="uid://dxn8bcuhx2b1k" path="res://assets/buttonpannel.png" id="5_2trii"]
+[ext_resource type="Script" path="res://scripts/pannel.gd" id="6_goc3b"]
+[ext_resource type="Texture2D" uid="uid://c7fll86bmhg0u" path="res://assets/addbutton.png" id="6_lxv26"]
+[ext_resource type="Texture2D" uid="uid://kh26o2t7m7bn" path="res://assets/addbutton-lg.png" id="6_x31vx"]
+[ext_resource type="Texture2D" uid="uid://c7kroflt6ql3x" path="res://assets/addbuttonpressed.png" id="7_3iw2q"]
+[ext_resource type="PackedScene" uid="uid://c3fg0vdaqo7qm" path="res://scenes/truck.tscn" id="7_oo4m8"]
+[ext_resource type="Texture2D" uid="uid://km23reirlbkk" path="res://assets/addbuttonpressed_lg.png" id="7_tm567"]
+[ext_resource type="Texture2D" uid="uid://b80cumd2y2a7f" path="res://assets/sendbutton.png" id="8_0k3s6"]
+[ext_resource type="Texture2D" uid="uid://dyki8kkkq13j1" path="res://assets/sendbuttonpressed.png" id="9_oe3rj"]
+[ext_resource type="Texture2D" uid="uid://dhs6w47ap6slo" path="res://assets/addbutton_sm.png" id="10_ftwum"]
+[ext_resource type="Texture2D" uid="uid://c7lyyipxaf0ki" path="res://assets/trashcanclose.png" id="10_ghwnq"]
+[ext_resource type="Texture2D" uid="uid://dt677kwh1utj4" path="res://assets/addbuttonpressed_sm.png" id="11_mmrg1"]
+[ext_resource type="Texture2D" uid="uid://d24jernlaqel3" path="res://assets/trashcanopen.png" id="11_o2ub2"]
+[ext_resource type="Texture2D" uid="uid://hfpbb1qijry0" path="res://assets/disabled_lg.png" id="11_p6rss"]
+[ext_resource type="Script" path="res://scripts/delete_button.gd" id="11_t610a"]
+[ext_resource type="Texture2D" uid="uid://cira7a8qhfcvh" path="res://assets/disabled_md.png" id="14_s7q4u"]
+[ext_resource type="Script" path="res://scripts/send_button.gd" id="15_4hva7"]
+[ext_resource type="AudioStream" uid="uid://c8rcpnxcls132" path="res://assets/sounds/button.wav" id="16_83mph"]
+[ext_resource type="PackedScene" uid="uid://din0q4g4d6hbn" path="res://scenes/belt.tscn" id="16_ydn7s"]
+[ext_resource type="Texture2D" uid="uid://dj7kgr4vhhl46" path="res://assets/disabled_sm.png" id="17_8iu0e"]
+[ext_resource type="Script" path="res://scripts/labels.gd" id="23_uyyc5"]
+[ext_resource type="Script" path="res://scripts/help.gd" id="25_qhm6a"]
+[ext_resource type="Texture2D" uid="uid://y1dyossey667" path="res://assets/help.png" id="26_xgm8l"]
+[ext_resource type="FontFile" uid="uid://b7b0t4qtrwurf" path="res://assets/dogicapixel.ttf" id="27_3lhwm"]
+[ext_resource type="Texture2D" uid="uid://bxuqdcau6yhk0" path="res://assets/info_box.png" id="28_bhgw8"]
+
+[sub_resource type="Theme" id="Theme_8jdib"]
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_6scjc")
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("1_wihg6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebnt"]
+size = Vector2(1600, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yu7c"]
+size = Vector2(400, 592)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gb6y"]
+size = Vector2(400, 1760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_taksm"]
+size = Vector2(2048, 528)
+
+[node name="game" type="Control" groups=["truck_updates"]]
+layout_mode = 3
+anchors_preset = 0
+theme = SubResource("Theme_8jdib")
+script = ExtResource("3_57lk5")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(0, -51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" groups=["wall"]]
+position = Vector2(800, -200)
+shape = SubResource("RectangleShape2D_7ebnt")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" groups=["wall"]]
+position = Vector2(-200, -104)
+shape = SubResource("RectangleShape2D_7yu7c")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" groups=["wall"]]
+position = Vector2(1800, 480)
+shape = SubResource("RectangleShape2D_4gb6y")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls" groups=["wall"]]
+position = Vector2(576, 1096)
+shape = SubResource("RectangleShape2D_taksm")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="truck" parent="." instance=ExtResource("7_oo4m8")]
+position = Vector2(1664, -51)
+
+[node name="belt" parent="." instance=ExtResource("16_ydn7s")]
+position = Vector2(0, -51)
+
+[node name="Pannel" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(800, 1193)
+scale = Vector2(4, 4)
+texture = ExtResource("5_2trii")
+script = ExtResource("6_goc3b")
+
+[node name="add_button_md" type="TextureButton" parent="Pannel"]
+offset_left = -126.0
+offset_top = -36.6
+offset_right = -77.0
+offset_bottom = 11.4
+action_mode = 0
+texture_normal = ExtResource("6_lxv26")
+texture_pressed = ExtResource("7_3iw2q")
+texture_disabled = ExtResource("14_s7q4u")
+
+[node name="add_button_sm" type="TextureButton" parent="Pannel"]
+offset_left = -67.0
+offset_top = -36.6
+offset_right = -18.0
+offset_bottom = 11.4
+action_mode = 0
+texture_normal = ExtResource("10_ftwum")
+texture_pressed = ExtResource("11_mmrg1")
+texture_disabled = ExtResource("17_8iu0e")
+
+[node name="send_button" type="TextureButton" parent="Pannel" groups=["send_button"]]
+offset_left = 89.5
+offset_top = -36.0
+offset_right = 185.5
+offset_bottom = 12.0
+texture_normal = ExtResource("8_0k3s6")
+texture_pressed = ExtResource("9_oe3rj")
+texture_disabled = ExtResource("9_oe3rj")
+script = ExtResource("15_4hva7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Pannel/send_button"]
+stream = ExtResource("16_83mph")
+pitch_scale = 0.65
+
+[node name="delete_button" type="TextureButton" parent="Pannel"]
+offset_left = -5.0
+offset_top = -28.25
+offset_right = 44.0
+offset_bottom = 11.75
+texture_normal = ExtResource("10_ghwnq")
+script = ExtResource("11_t610a")
+
+[node name="trashcan_open" type="Sprite2D" parent="Pannel/delete_button"]
+visible = false
+position = Vector2(24.5, 8.25)
+texture = ExtResource("11_o2ub2")
+
+[node name="add_button_lg" type="TextureButton" parent="Pannel"]
+offset_left = -185.0
+offset_top = -37.0
+offset_right = -136.0
+offset_bottom = 11.0
+action_mode = 0
+texture_normal = ExtResource("6_x31vx")
+texture_pressed = ExtResource("7_tm567")
+texture_disabled = ExtResource("11_p6rss")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["main_player"]]
+bus = &"New Bus 2"
+
+[node name="Labels" type="Control" parent="."]
+z_index = 4
+layout_mode = 1
+anchors_preset = 0
+offset_left = -696.0
+offset_top = 92.0
+offset_right = -656.0
+offset_bottom = 132.0
+script = ExtResource("23_uyyc5")
+
+[node name="BalanceLabel" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 465.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 50
+text = "balance :"
+vertical_alignment = 1
+
+[node name="ShipmentLabel" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 117.0
+offset_right = 390.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 30
+text = "shipment :"
+vertical_alignment = 1
+
+[node name="IncomeLabel" type="RichTextLabel" parent="Labels"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 123.0
+offset_right = 682.0
+offset_bottom = 189.0
+theme_override_colors/default_color = Color(0.647059, 0.772549, 0.470588, 1)
+bbcode_enabled = true
+text = "0"
+
+[node name="GasLabel" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 183.0
+offset_right = 390.0
+offset_bottom = 249.0
+theme_override_font_sizes/font_size = 30
+text = "gas :"
+vertical_alignment = 1
+
+[node name="ShippingLabel" type="Label" parent="Labels"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 183.0
+offset_right = 529.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0.882353, 0.368627, 0.419608, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Labels"]
+z_index = 100
+layout_mode = 0
+offset_left = 40.0
+offset_top = -51.0
+offset_right = 59.0
+offset_bottom = -34.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("28_bhgw8")
+
+[node name="help" type="Control" parent="."]
+z_index = 99
+anchors_preset = 0
+script = ExtResource("25_qhm6a")
+
+[node name="Help" type="Sprite2D" parent="help"]
+position = Vector2(800, 480)
+scale = Vector2(4, 4)
+texture = ExtResource("26_xgm8l")
+
+[node name="Label" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 488.0
+offset_right = 608.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("27_3lhwm")
+theme_override_font_sizes/font_size = 30
+text = "summons 
+packages"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 488.0
+offset_right = 1088.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("27_3lhwm")
+theme_override_font_sizes/font_size = 30
+text = "discards
+package"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 1144.0
+offset_top = 491.0
+offset_right = 1568.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("27_3lhwm")
+theme_override_font_sizes/font_size = 30
+text = "sends off
+truck"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 200.0
+offset_right = 1639.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("27_3lhwm")
+theme_override_font_sizes/font_size = 30
+text = "money
+multipliers"
+
+[node name="Label5" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 72.0
+offset_right = 855.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("27_3lhwm")
+theme_override_font_sizes/font_size = 30
+text = "if < 0, you lose"
+
+[node name="values" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 816.0
+offset_right = 230.0
+offset_bottom = 863.0
+theme_override_colors/font_color = Color(0.286275, 0.572549, 0.839216, 1)
+text = "+25
+"
+
+[node name="values2" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 816.0
+offset_right = 462.0
+offset_bottom = 863.0
+theme_override_colors/font_color = Color(0.286275, 0.572549, 0.839216, 1)
+text = "+10
+"
+
+[node name="values3" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 816.0
+offset_right = 676.0
+offset_bottom = 863.0
+theme_override_colors/font_color = Color(0.286275, 0.572549, 0.839216, 1)
+text = "+0
+"
+
+[node name="values4" type="Label" parent="help"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 816.0
+offset_right = 944.0
+offset_bottom = 863.0
+theme_override_colors/font_color = Color(0.882353, 0.368627, 0.419608, 1)
+text = "-50"
+
+[connection signal="pressed" from="Pannel/add_button_md" to="belt" method="_on_add_button_md_pressed"]
+[connection signal="pressed" from="Pannel/add_button_sm" to="belt" method="_on_add_button_sm_pressed"]
+[connection signal="pressed" from="Pannel/send_button" to="truck" method="_on_send_button_pressed"]
+[connection signal="pressed" from="Pannel/send_button" to="Pannel/send_button" method="_on_pressed"]
+[connection signal="gui_input" from="Pannel/delete_button" to="Pannel/delete_button" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Pannel/delete_button" to="Pannel/delete_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pannel/delete_button" to="Pannel/delete_button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Pannel/add_button_lg" to="belt" method="_on_add_button_lg_pressed"]
+[connection signal="mouse_entered" from="Labels/TextureButton" to="help" method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="Labels/TextureButton" to="help" method="_on_texture_button_mouse_exited"]

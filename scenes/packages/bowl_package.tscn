@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbu1co86ih4ll"]
+
+[ext_resource type="Script" path="res://scripts/package.gd" id="1_x53pl"]
+[ext_resource type="Texture2D" uid="uid://dvverg8cwhgjp" path="res://assets/bowl.png" id="2_c404e"]
+[ext_resource type="PackedScene" uid="uid://eduytcldmlre" path="res://scenes/cube.tscn" id="3_y8cde"]
+[ext_resource type="Texture2D" uid="uid://5gpnmohn4jx2" path="res://assets/up.png" id="4_anw7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcvki"]
+size = Vector2(104, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ai7r8"]
+size = Vector2(208, 104)
+
+[node name="package" type="RigidBody2D"]
+input_pickable = true
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_x53pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-52, 0)
+shape = SubResource("RectangleShape2D_bcvki")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -104)
+shape = SubResource("RectangleShape2D_ai7r8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(0, 104)
+shape = SubResource("RectangleShape2D_ai7r8")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_c404e")
+
+[node name="Up" type="Sprite2D" parent="Sprite"]
+position = Vector2(13, -26)
+texture = ExtResource("4_anw7y")
+
+[node name="GhostSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_c404e")
+
+[node name="cube" parent="GhostSprite" instance=ExtResource("3_y8cde")]
+position = Vector2(13, -26)
+
+[node name="cube2" parent="GhostSprite" instance=ExtResource("3_y8cde")]
+position = Vector2(-13, -26)
+
+[node name="cube3" parent="GhostSprite" instance=ExtResource("3_y8cde")]
+position = Vector2(-13, 0)
+
+[node name="cube4" parent="GhostSprite" instance=ExtResource("3_y8cde")]
+position = Vector2(-13, 26)
+
+[node name="cube5" parent="GhostSprite" instance=ExtResource("3_y8cde")]
+position = Vector2(13, 26)
+
+[node name="Up2" type="Sprite2D" parent="GhostSprite"]
+position = Vector2(13, -26)
+texture = ExtResource("4_anw7y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

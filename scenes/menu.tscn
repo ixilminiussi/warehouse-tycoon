@@ -1,0 +1,191 @@
+[gd_scene load_steps=21 format=3 uid="uid://otapngkvmytk"]
+
+[ext_resource type="Theme" uid="uid://bskpr7rp3g8g3" path="res://assets/main_theme.tres" id="1_t25to"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_vrree"]
+[ext_resource type="AudioStream" uid="uid://cbtwkuwsj8gpj" path="res://assets/sounds/rain.wav" id="3_a7cwh"]
+[ext_resource type="Texture2D" uid="uid://cij547kkvvfew" path="res://assets/ui_button.png" id="3_ru0hl"]
+[ext_resource type="Texture2D" uid="uid://ky0v52foucqi" path="res://assets/outside.png" id="4_a3okx"]
+[ext_resource type="Texture2D" uid="uid://b1om6vsu3hyx7" path="res://assets/ui_button_toggle.png" id="4_g2nkp"]
+[ext_resource type="Texture2D" uid="uid://dk2l50ajilj5m" path="res://assets/back.png" id="5_ec68l"]
+[ext_resource type="Texture2D" uid="uid://cojrqaxwwjljb" path="res://assets/ui_button_hover.png" id="5_wflrx"]
+[ext_resource type="Texture2D" uid="uid://dl8n8ec7tranm" path="res://assets/front.png" id="6_6xwct"]
+[ext_resource type="AudioStream" uid="uid://c8rcpnxcls132" path="res://assets/sounds/button.wav" id="6_np5jf"]
+[ext_resource type="FontFile" uid="uid://bqf70gym6urk4" path="res://assets/Early GameBoy.ttf" id="6_psnev"]
+[ext_resource type="Texture2D" uid="uid://myjpsth48w6x" path="res://assets/belt.png" id="7_6j7dd"]
+[ext_resource type="Texture2D" uid="uid://w62ra4jyf7tf" path="res://assets/left_click.png" id="7_sqia3"]
+[ext_resource type="FontFile" uid="uid://b7b0t4qtrwurf" path="res://assets/dogicapixel.ttf" id="8_bq8bl"]
+[ext_resource type="Texture2D" uid="uid://btgf7a1iq8wum" path="res://assets/right_click.png" id="9_qb71l"]
+
+[sub_resource type="Environment" id="Environment_6wig8"]
+tonemap_mode = 3
+
+[sub_resource type="Curve" id="Curve_xt232"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3u22d"]
+curve = SubResource("Curve_xt232")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_retkj"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 7.0
+initial_velocity_max = 25.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_3u22d")
+color = Color(0.847059, 0.94902, 1, 0.52549)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i7agc"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, 10, 0)
+spread = 4.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 1.5
+color = Color(0.764706, 0.839216, 0.886275, 0.784314)
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_t25to")
+script = ExtResource("1_vrree")
+
+[node name="menu" type="Control" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -95.0
+offset_right = -57.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_ru0hl")
+texture_pressed = ExtResource("4_g2nkp")
+texture_hover = ExtResource("5_wflrx")
+
+[node name="Label" type="Label" parent="menu"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 41.0
+offset_right = 945.0
+offset_bottom = 297.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_psnev")
+text = "Warehouse 
+Tycoon"
+vertical_alignment = 1
+
+[node name="LeftClick" type="Sprite2D" parent="menu"]
+position = Vector2(162, 423)
+scale = Vector2(4, 4)
+texture = ExtResource("7_sqia3")
+
+[node name="Label2" type="Label" parent="menu/LeftClick"]
+offset_left = 14.5
+offset_top = -6.5
+offset_right = 391.5
+offset_bottom = 84.5
+theme_override_colors/font_color = Color(0.764706, 0.839216, 0.886275, 1)
+theme_override_fonts/font = ExtResource("8_bq8bl")
+text = "move"
+
+[node name="RightClick" type="Sprite2D" parent="menu"]
+position = Vector2(162, 578)
+scale = Vector2(4, 4)
+texture = ExtResource("9_qb71l")
+
+[node name="Label" type="Label" parent="menu/RightClick"]
+offset_left = 14.5
+offset_top = -6.5
+offset_right = 92.5
+offset_bottom = 10.5
+theme_override_colors/font_color = Color(0.764706, 0.839216, 0.886275, 1)
+theme_override_fonts/font = ExtResource("8_bq8bl")
+text = "rotate
+"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6wig8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a7cwh")
+volume_db = -20.752
+pitch_scale = 0.9
+autoplay = true
+bus = &"New Bus"
+
+[node name="Outside" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(800, 429)
+scale = Vector2(4, 4)
+texture = ExtResource("4_a3okx")
+
+[node name="drops" type="GPUParticles2D" parent="Outside"]
+position = Vector2(0, 87.5)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_retkj")
+lifetime = 1.5
+preprocess = 1.5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Outside"]
+position = Vector2(-15.75, -97)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_i7agc")
+preprocess = 2.0
+trail_enabled = true
+trail_lifetime = 0.1
+
+[node name="Back" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(800, 429)
+scale = Vector2(4, 4)
+texture = ExtResource("5_ec68l")
+
+[node name="Front" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(800, 429)
+scale = Vector2(4, 4)
+texture = ExtResource("6_6xwct")
+
+[node name="Belt" type="Sprite2D" parent="."]
+position = Vector2(60, 749)
+scale = Vector2(4, 4)
+texture = ExtResource("7_6j7dd")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(696, 385)
+scale = Vector2(4, 4)
+stream = ExtResource("6_np5jf")
+volume_db = -10.667
+pitch_scale = 1.49
+
+[connection signal="pressed" from="menu/TextureButton" to="." method="_on_start_button_pressed"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://s4snployoy27"]
+
+[ext_resource type="Script" path="res://scripts/package.gd" id="1_gx7bo"]
+[ext_resource type="Texture2D" uid="uid://d1hcf4ho5g40k" path="res://assets/triple.png" id="2_a0a53"]
+[ext_resource type="PackedScene" uid="uid://eduytcldmlre" path="res://scenes/cube.tscn" id="3_f6w3a"]
+[ext_resource type="Texture2D" uid="uid://5gpnmohn4jx2" path="res://assets/up.png" id="4_8hqg0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slytn"]
+size = Vector2(312, 104)
+
+[node name="package" type="RigidBody2D"]
+input_pickable = true
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_gx7bo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_slytn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_a0a53")
+
+[node name="Up" type="Sprite2D" parent="Sprite"]
+position = Vector2(-26, 0)
+texture = ExtResource("4_8hqg0")
+
+[node name="GhostSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_a0a53")
+
+[node name="cube" parent="GhostSprite" instance=ExtResource("3_f6w3a")]
+position = Vector2(-26, 0)
+
+[node name="cube2" parent="GhostSprite" instance=ExtResource("3_f6w3a")]
+
+[node name="cube3" parent="GhostSprite" instance=ExtResource("3_f6w3a")]
+position = Vector2(26, 0)
+
+[node name="Up2" type="Sprite2D" parent="GhostSprite"]
+position = Vector2(-26, 0)
+texture = ExtResource("4_8hqg0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

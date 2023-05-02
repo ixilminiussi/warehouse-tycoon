@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://csbi45t50colr"]
+
+[ext_resource type="Theme" uid="uid://bskpr7rp3g8g3" path="res://assets/main_theme.tres" id="1_dgfvm"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="2_ex00d"]
+[ext_resource type="Script" path="res://scripts/gameover_label.gd" id="3_435t5"]
+[ext_resource type="Texture2D" uid="uid://ddmp1r0pcqtxo" path="res://assets/truck_deco.png" id="3_gcum4"]
+[ext_resource type="FontFile" uid="uid://ei4s41d1n3na" path="res://assets/dogicapixelbold.ttf" id="3_ryvyo"]
+[ext_resource type="Script" path="res://scripts/truck_deco.gd" id="4_yatmj"]
+[ext_resource type="Texture2D" uid="uid://cij547kkvvfew" path="res://assets/ui_button.png" id="7_6bd1t"]
+[ext_resource type="Texture2D" uid="uid://b1om6vsu3hyx7" path="res://assets/ui_button_toggle.png" id="8_u8vyb"]
+[ext_resource type="Texture2D" uid="uid://cojrqaxwwjljb" path="res://assets/ui_button_hover.png" id="9_lvbt8"]
+[ext_resource type="AudioStream" uid="uid://c8rcpnxcls132" path="res://assets/sounds/button.wav" id="10_8ll7v"]
+[ext_resource type="Texture2D" uid="uid://4tuir6nllehp" path="res://assets/ui_quit.png" id="11_wygqj"]
+[ext_resource type="Texture2D" uid="uid://brwoictoh2sb" path="res://assets/ui_quit_toggle.png" id="12_r6xye"]
+[ext_resource type="Texture2D" uid="uid://caiws82ulgh2y" path="res://assets/ui_quit_hover.png" id="13_2u00u"]
+
+[node name="gameover_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_dgfvm")
+script = ExtResource("2_ex00d")
+
+[node name="gameover_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -880.0
+offset_top = 104.0
+offset_right = -80.0
+offset_bottom = 232.0
+theme_override_fonts/font = ExtResource("3_ryvyo")
+theme_override_font_sizes/font_size = 70
+text = "gameover"
+script = ExtResource("3_435t5")
+
+[node name="Label" type="Label" parent="gameover_label"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 608.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 25
+text = "you went bankrupt on your"
+autowrap_mode = 3
+
+[node name="truck" type="Control" parent="."]
+z_index = 1
+anchors_preset = 0
+offset_left = 2112.0
+offset_top = 496.0
+offset_right = 2112.0
+offset_bottom = 496.0
+script = ExtResource("4_yatmj")
+
+[node name="ScoreLabel" type="Label" parent="truck"]
+layout_mode = 0
+offset_left = -312.0
+offset_top = -296.0
+offset_right = 88.0
+offset_bottom = -168.0
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[node name="RecordLabel" type="Label" parent="truck"]
+layout_mode = 0
+offset_left = -312.0
+offset_top = -200.0
+offset_right = 1.0
+offset_bottom = -170.0
+theme_override_font_sizes/font_size = 30
+text = "New Record: 0!"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="truck"]
+position = Vector2(-528, -124)
+scale = Vector2(0.25, 0.25)
+
+[node name="TruckDeco" type="Sprite2D" parent="truck"]
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("3_gcum4")
+
+[node name="PlayButton" type="TextureButton" parent="truck"]
+layout_mode = 0
+offset_left = -104.0
+offset_top = 56.0
+offset_right = -57.0
+offset_bottom = 73.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("7_6bd1t")
+texture_pressed = ExtResource("8_u8vyb")
+texture_hover = ExtResource("9_lvbt8")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="truck"]
+position = Vector2(-1416, -111)
+scale = Vector2(4, 4)
+stream = ExtResource("10_8ll7v")
+volume_db = -10.667
+pitch_scale = 1.49
+
+[node name="QuitButton" type="TextureButton" parent="truck"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 56.0
+offset_right = 215.0
+offset_bottom = 73.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("11_wygqj")
+texture_pressed = ExtResource("12_r6xye")
+texture_hover = ExtResource("13_2u00u")
+
+[connection signal="pressed" from="truck/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="truck/QuitButton" to="." method="_on_quit_button_pressed"]

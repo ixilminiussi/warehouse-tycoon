@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://brmalyqckp31j"]
+
+[ext_resource type="Script" path="res://scripts/package.gd" id="1_46vbr"]
+[ext_resource type="Texture2D" uid="uid://7uef5wxqt4ih" path="res://assets/T.png" id="2_h2s8n"]
+[ext_resource type="PackedScene" uid="uid://eduytcldmlre" path="res://scenes/cube.tscn" id="3_doja2"]
+[ext_resource type="Texture2D" uid="uid://5gpnmohn4jx2" path="res://assets/up.png" id="4_dxkk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slytn"]
+size = Vector2(312, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpfto"]
+size = Vector2(104, 104)
+
+[node name="package" type="RigidBody2D"]
+input_pickable = true
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_46vbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 52)
+shape = SubResource("RectangleShape2D_slytn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_wpfto")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_h2s8n")
+
+[node name="Up" type="Sprite2D" parent="Sprite"]
+position = Vector2(-26, 13)
+texture = ExtResource("4_dxkk7")
+
+[node name="GhostSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_h2s8n")
+
+[node name="cube" parent="GhostSprite" instance=ExtResource("3_doja2")]
+position = Vector2(0, 13)
+
+[node name="cube2" parent="GhostSprite" instance=ExtResource("3_doja2")]
+position = Vector2(26, 13)
+
+[node name="cube3" parent="GhostSprite" instance=ExtResource("3_doja2")]
+position = Vector2(-26, 13)
+
+[node name="cube4" parent="GhostSprite" instance=ExtResource("3_doja2")]
+position = Vector2(0, -13)
+
+[node name="Up2" type="Sprite2D" parent="GhostSprite"]
+position = Vector2(-26, 13)
+texture = ExtResource("4_dxkk7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

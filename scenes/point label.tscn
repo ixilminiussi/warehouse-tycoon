@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw7oakhoo0qht"]
+
+[ext_resource type="Script" path="res://scripts/point label.gd" id="2_jgh7k"]
+
+[node name="Label" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -75.0
+offset_right = 0.5
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 50)
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_jgh7k")

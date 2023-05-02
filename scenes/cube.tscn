@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://eduytcldmlre"]
+
+[ext_resource type="Script" path="res://scripts/cube.gd" id="1_2wqla"]
+
+[node name="cube" type="Marker2D" groups=["cube"]]
+script = ExtResource("1_2wqla")
