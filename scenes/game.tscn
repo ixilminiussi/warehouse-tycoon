@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ced2qsowmnvvm"]
+[gd_scene load_steps=34 format=3 uid="uid://qyqwpi7ylaif"]
 
 [ext_resource type="FontFile" uid="uid://ei4s41d1n3na" path="res://assets/dogicapixelbold.ttf" id="1_6scjc"]
 [ext_resource type="FontFile" uid="uid://bqf70gym6urk4" path="res://assets/Early GameBoy.ttf" id="1_wihg6"]
@@ -326,6 +326,8 @@ offset_bottom = 863.0
 theme_override_colors/font_color = Color(0.882353, 0.368627, 0.419608, 1)
 text = "-50"
 
+[connection signal="game_over" from="." to="Pannel" method="_on_game_game_over"]
+[connection signal="game_over" from="." to="Labels" method="_on_game_game_over"]
 [connection signal="pressed" from="Pannel/add_button_md" to="belt" method="_on_add_button_md_pressed"]
 [connection signal="pressed" from="Pannel/add_button_sm" to="belt" method="_on_add_button_sm_pressed"]
 [connection signal="pressed" from="Pannel/send_button" to="truck" method="_on_send_button_pressed"]

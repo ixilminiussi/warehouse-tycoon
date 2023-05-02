@@ -50,8 +50,6 @@ position = Vector2(26, 13)
 position = Vector2(-26, -13)
 texture = ExtResource("4_5wt26")
 
-[node name="cube" parent="." instance=ExtResource("3_eyfee")]
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
