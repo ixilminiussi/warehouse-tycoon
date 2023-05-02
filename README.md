@@ -12,5 +12,5 @@ This was my first Ludum Dare, my first solo game jam and my second ever game. Iâ
 I apologize for the lack of MacOS / HTML5 version, it seems Godot 4 has problems with that.
 
 ## Links
-![itch.io](https://fatnose.itch.io/warehouse-tycoon)
-![ludum dare](https://ldjam.com/events/ludum-dare/53/warehouse-tycoon)
+* [itch.io](https://fatnose.itch.io/warehouse-tycoon)
+* [ludum dare](https://ldjam.com/events/ludum-dare/53/warehouse-tycoon)
